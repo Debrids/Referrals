@@ -139,6 +139,23 @@
       font-size: 0.9em;
       color: #BBBBBB;
     }
+    .shimmer-text {
+      background: linear-gradient(
+        90deg,
+        #04BF8A 25%,
+        #a2f9d6 50%,
+        #04BF8A 75%
+      );
+      background-size: 200% 100%;
+      animation: shimmer 2.5s linear infinite;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    
+    @keyframes shimmer {
+      0% { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
+    }
   </style>
 </head>
 <body>
@@ -164,8 +181,8 @@
     </div>
 
     <p>
-      👉 <a href="https://torbox.app/subscription?referral=2815062b-aa56-4c3f-a12f-7d0f72158243"
-         class="cta"
+    <a href="https://torbox.app/subscription?referral=2815062b-aa56-4c3f-a12f-7d0f72158243"
+         class="cta shimmer-text"
          target="_blank"
          rel="noopener noreferrer">Click here to apply the code automatically</a>
     </p>
