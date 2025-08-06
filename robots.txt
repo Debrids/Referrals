@@ -1,3 +1,3 @@
 User-agent: *
 Allow: /
-Sitemap: https://Debrids.github.io/Referrals/sitemap.xml
+Sitemap: https://referralbox.github.io/torbox/sitemap.xml
