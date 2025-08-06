@@ -11,6 +11,16 @@
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
   <link rel="shortcut icon" href="favicon.ico" />
   <link rel="canonical" href="https://debrids.github.io/Referrals/" />
+  <script>
+    function copyReferralCode() {
+      const code = document.getElementById('referralCode').innerText;
+      navigator.clipboard.writeText(code).then(() => {
+        alert("Referral code copied to clipboard!");
+      }, () => {
+        alert("Failed to copy referral code.");
+      });
+    }
+  </script>
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -126,10 +136,18 @@
 
     <h2>Your Exclusive TorBox Referral Code</h2>
 
-    <div class="referral-code">2815062b-aa56-4c3f-a12f-7d0f72158243</div>
-
+    <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+      <div class="referral-code" id="referralCode">2815062b-aa56-4c3f-a12f-7d0f72158243</div>
+      <button onclick="copyReferralCode()" style="padding: 8px 12px; background-color: #04BF8A; border: none; border-radius: 5px; color: white; cursor: pointer;">
+        📋 Copy
+      </button>
+    </div>
+    
     <p>
-      👉 <a href="https://torbox.app/subscription?referral=2815062b-aa56-4c3f-a12f-7d0f72158243" class="cta">Click here to apply the code automatically</a>
+      👉 <a href="https://torbox.app/subscription?referral=2815062b-aa56-4c3f-a12f-7d0f72158243"
+         class="cta"
+         target="_blank"
+         rel="noopener noreferrer">Click here to apply the code automatically</a>
     </p>
 
     <h2>Why Use This TorBox Referral Code?</h2>
