@@ -11,62 +11,71 @@
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
   <link rel="shortcut icon" href="favicon.ico" />
   <link rel="canonical" href="https://debrids.github.io/Referrals/" />
-  <script>
-    function copyReferralCode() {
-      const code = document.getElementById('referralCode').innerText;
-      navigator.clipboard.writeText(code).then(() => {
-        alert("Referral code copied to clipboard!");
-      }, () => {
-        alert("Failed to copy referral code.");
-      });
-    }
-  </script>
+
+  <!-- JSON-LD Structured Data for Rich Snippets -->
   <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebPage",
-  "name": "TorBox Referral Code – Get Free Extra Days on Every Subscription",
-  "description": "Use this working TorBox referral code to earn bonus days with every purchase. Works for all accounts. Apply the code instantly or manually.",
-  "url": "https://Debrids.github.io/Referrals/",
-  "mainEntity": {
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "How do I use the TorBox referral code?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "You can use the referral code by clicking the direct link, or manually entering it in your TorBox account under Account > Subscription. It can be applied at any time."
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "TorBox Referral Code – Get Free Extra Days on Every Subscription",
+    "description": "Use this working TorBox referral code to earn bonus days with every purchase. Works for all accounts. Apply the code instantly or manually.",
+    "url": "https://Debrids.github.io/Referrals/",
+    "mainEntity": {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is TorBox.app?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "TorBox.app is a cloud torrenting and debrid-style service that allows users to download torrents securely and anonymously through the cloud. It provides fast downloads without needing a local torrent client and supports streaming on multiple devices."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I use the TorBox referral code?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "You can use the referral code by clicking the direct referral link to apply it automatically or by manually entering it in your TorBox account under Account > Subscription. The code can be applied at any time."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What do I get for using a TorBox referral code?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Using a referral code grants you 7 extra days of your subscription plan with every purchase. The person who referred you also receives 15 extra days instantly."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is the TorBox referral code only for new users?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No, the referral code can be applied by both new and existing TorBox users alike."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What are the popular uses of TorBox.app?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "TorBox.app is popular for cloud torrenting with Stremio and Kodi add-ons, streaming on smart devices, direct torrent downloads without a local client, and automated torrent management via API. It also serves as a secure way to share files temporarily."
+          }
         }
-      },
-      {
-        "@type": "Question",
-        "name": "What do I get for using a TorBox referral code?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "You will receive 7 extra days of your subscription plan every time you make a purchase. The person who referred you gets 15 extra days."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Is the TorBox referral code only for new users?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "No, the referral code can be applied by new and existing TorBox users alike."
-        }
-      }
-    ]
+      ]
+    }
   }
-}
-</script>
-<script type="text/javascript">     
+  </script>
+  <!-- Usermaven Tracking Script -->
+  <script type="text/javascript">     
     (function () {
-        window.usermaven = window.usermaven || (function () { (window.usermavenQ = window.usermavenQ || []).push(arguments); })
+        window.usermaven = window.usermaven || function () { (window.usermavenQ = window.usermavenQ || []).push(arguments); }
         var t = document.createElement('script'),
             s = document.getElementsByTagName('script')[0];
         t.defer = true;
         t.id = 'um-tracker';
-        t.setAttribute('data-tracking-host', "https://events.usermaven.com")
+        t.setAttribute('data-tracking-host', "https://events.usermaven.com");
         t.setAttribute('data-key', 'UMVAEky2Uh');
         t.setAttribute('data-autocapture', 'true'); 
         t.setAttribute('data-privacy-policy', 'strict'); 
@@ -74,6 +83,22 @@
         s.parentNode.insertBefore(t, s);
     })();
   </script>
+
+  <!-- Copy to Clipboard Script -->
+  <script>
+    function copyReferralCode() {
+      const code = document.getElementById('referralCode').innerText;
+      const copyBtn = document.getElementById('copyButton');
+      navigator.clipboard.writeText(code).then(() => {
+        copyBtn.innerText = "✅ Copied!";
+        setTimeout(() => copyBtn.innerText = "📋 Copy", 2000);
+      }, () => {
+        copyBtn.innerText = "❌ Failed!";
+        setTimeout(() => copyBtn.innerText = "📋 Copy", 2000);
+      });
+    }
+  </script>
+
   <style>
     body {
       background-color: #1E2129;
@@ -94,16 +119,6 @@
     }
     h1, h2, h3 {
       color: #04BF8A;
-    }
-    .referral-code {
-      font-size: 1.6em;
-      font-weight: bold;
-      background-color: #2A2D35;
-      padding: 12px;
-      text-align: center;
-      border-radius: 6px;
-      word-break: break-word;
-      margin: 20px 0;
     }
     .cta {
       display: inline-block;
@@ -136,13 +151,18 @@
 
     <h2>Your Exclusive TorBox Referral Code</h2>
 
-    <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
-      <div class="referral-code" id="referralCode">2815062b-aa56-4c3f-a12f-7d0f72158243</div>
-      <button onclick="copyReferralCode()" style="padding: 8px 12px; background-color: #04BF8A; border: none; border-radius: 5px; color: white; cursor: pointer;">
+    <!-- Unified Referral Code + Copy Button -->
+    <div style="display: flex; flex-wrap: wrap; width: fit-content; margin: 20px 0; border-radius: 6px; overflow: hidden; background-color: #2A2D35;">
+      <div id="referralCode" style="padding: 12px 16px; font-size: 1.6em; font-weight: bold; color: #fff; background-color: #2A2D35;">
+        2815062b-aa56-4c3f-a12f-7d0f72158243
+      </div>
+      <button id="copyButton"
+              onclick="copyReferralCode()"
+              style="padding: 12px 16px; background-color: #04BF8A; color: white; border: none; font-weight: bold; font-size: 1.6em; cursor: pointer;">
         📋 Copy
       </button>
     </div>
-    
+
     <p>
       👉 <a href="https://torbox.app/subscription?referral=2815062b-aa56-4c3f-a12f-7d0f72158243"
          class="cta"
@@ -170,8 +190,23 @@
 
     <p>From that moment on, <strong>every purchase</strong> you make gives you <strong>7 days of extra time</strong>. It's one of the easiest ways to maximize your subscription at no cost.</p>
 
-    <h3>What Is TorBox?</h3>
-    <p><strong>TorBox</strong> is a premium encrypted email service designed for privacy-conscious users. It's fast, anonymous, and perfect for protecting your communications. With affordable plans and a generous referral program, it’s quickly becoming the go-to email provider for people who value their privacy online.</p>
+    <h3>What Is TorBox.app?</h3>
+    <p><strong>TorBox</strong> is a modern cloud torrenting and debrid-style service that allows users to add torrent files and download them securely and anonymously via the web. It's ideal for users who want fast, no-hassle access to files without running a torrent client locally.</p>
+    
+    <p>With both free and premium plans, TorBox is a great option for light or occasional torrent users who value privacy, speed, and simplicity. You can start downloading within seconds, and the referral program gives you even more value over time.</p>
+
+    <h3>Popular Uses of TorBox.app</h3>
+    <p><strong>TorBox.app</strong> is widely used as a cloud torrenting service powering many streaming and downloading applications. Here are some of the most popular ways users leverage TorBox:</p>
+    <ul>
+      <li><strong>Stremio Streaming:</strong> TorBox integrates with Stremio’s torrent add-ons, enabling fast, buffer-free streaming of movies and TV shows without a local torrent client.</li>
+      <li><strong>Kodi Add-ons:</strong> Many Kodi users rely on TorBox for anonymous and speedy torrent streaming within popular Kodi add-ons.</li>
+      <li><strong>Cloud Torrenting:</strong> Users offload torrent downloading to the cloud, saving bandwidth and keeping their IP addresses private.</li>
+      <li><strong>Direct Downloads:</strong> TorBox serves as a simple alternative to seedboxes, allowing quick torrent downloads via browser and direct file access.</li>
+      <li><strong>Streaming on Smart Devices:</strong> Since TorBox provides direct download links, users stream content easily on smart TVs, mobile devices, and media players.</li>
+      <li><strong>Automated Torrent Management:</strong> Premium users utilize TorBox’s API to automate torrent downloads and integrate with their own applications or scripts.</li>
+      <li><strong>Temporary File Hosting and Sharing:</strong> TorBox acts as a cloud host for sharing downloaded files securely without running a local torrent client.</li>
+    </ul>
+    <p>This combination of privacy, speed, and convenience makes TorBox.app a top choice for torrent users looking for hassle-free streaming and downloading.</p>
 
     <h3>Read the Official Guide</h3>
     <p>Want more details? TorBox has an official article explaining how the referral system works:  
