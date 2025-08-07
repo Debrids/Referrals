@@ -101,24 +101,6 @@
     }
   </script>
 
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-        const applyBtn = document.getElementById('applyCodeBtn');
-        const defaultText = applyBtn.querySelector('.text-default');
-        const hoverText = applyBtn.querySelector('.text-hover');
-
-        applyBtn.addEventListener('mouseenter', () => {
-          defaultText.style.opacity = '0';
-          hoverText.style.opacity = '1';
-        });
-
-        applyBtn.addEventListener('mouseleave', () => {
-          defaultText.style.opacity = '1';
-          hoverText.style.opacity = '0';
-        });
-    });
-    </script>
-
     <style>
     body {
       background-color: #1E2129;
@@ -154,7 +136,7 @@
       display: flex;
       flex-wrap: wrap;
       width: fit-content;
-      max-width: auto;
+      max-width: 460px;
       overflow-x: auto;
       margin: 20px 0;
       border-radius: 6px;
@@ -244,6 +226,23 @@
     .shimmer-text {
       animation: subtleTextGlow 2.5s ease-in-out infinite;
     }
+    
+    /* --- NEW STYLES FOR ANIMATIONS --- */
+    .hover-particle, .click-particle {
+      position: fixed;
+      pointer-events: none;
+      z-index: 9999;
+      font-size: 20px;
+    }
+
+    .hover-particle {
+        animation: particleDrift 2s ease-out forwards;
+    }
+
+    .click-particle {
+        font-weight: bold;
+        animation: particleFly 1.2s ease-out forwards;
+    }
 
     @keyframes subtleTextGlow {
       0%, 100% {
@@ -253,10 +252,20 @@
         text-shadow: 0 0 16px rgba(162, 249, 214, 0.9); /* A soft green glow */
       }
     }
- 
+  
     @keyframes pulseAnimation {
       0% { background-position: 0% center; }
       100% { background-position: 200% center; }
+    }
+    
+    @keyframes particleDrift {
+        0% { transform: translateY(0) scale(1); opacity: 1; }
+        100% { transform: translateY(-120px) scale(0.5) rotate(90deg); opacity: 0; }
+    }
+    
+    @keyframes particleFly {
+        0% { transform: translate(0, 0) scale(1) rotate(0deg); opacity: 1; }
+        100% { transform: var(--particle-transform); opacity: 0; }
     }
 
     @media (max-width: 480px) {
@@ -292,7 +301,7 @@
 
     <div class="referral-container">
       <div class="referral-code" id="referralCode">2815062b-aa56-4c3f-a12f-7d0f72158243</div>
-      <button id="copyButton" class="copy-button" onclick="copyReferralCode()" aria-label="Copy referral code to clipboard">📋 Copy</button>
+      <button id="copyButton" class="copy-button" aria-label="Copy referral code to clipboard">📋 Copy</button>
     </div>
     <br />
     <p>
@@ -355,5 +364,78 @@
       <p><em>Keywords: TorBox referral, TorBox referral code, TorBox invite code, TorBox promo, free TorBox days, TorBox subscription discount, best TorBox referral</em></p>
     </footer>
   </main>
+
+  <script>
+  // --- NEW SCRIPT FOR BUTTON ANIMATIONS ---
+  document.addEventListener("DOMContentLoaded", function () {
+      const ctaButton = document.getElementById('applyCodeBtn');
+      const copyButton = document.getElementById('copyButton');
+      let hoverInterval;
+
+      // --- Hover Effect for CTA Button ---
+      const hoverParticles = ['✨', '🎁', '🦄', '✅'];
+      
+      function spawnHoverParticle() {
+          const rect = ctaButton.getBoundingClientRect();
+          const p = document.createElement('span');
+          p.textContent = hoverParticles[Math.floor(Math.random() * hoverParticles.length)];
+          p.className = 'hover-particle';
+          p.style.fontSize = `${Math.random() * 10 + 15}px`;
+          
+          p.style.left = `${rect.left + Math.random() * rect.width}px`;
+          p.style.top = `${rect.top}px`;
+          
+          document.body.appendChild(p);
+          setTimeout(() => p.remove(), 2000);
+      }
+
+      ctaButton.addEventListener('mouseenter', () => {
+          if (hoverInterval) clearInterval(hoverInterval);
+          hoverInterval = setInterval(spawnHoverParticle, 150);
+      });
+
+      ctaButton.addEventListener('mouseleave', () => {
+          clearInterval(hoverInterval);
+      });
+
+      // --- Click Effect for Copy Button ---
+      const clickParticles = ['🚀', '✅', '+7', '✨'];
+
+      copyButton.addEventListener('click', function(e) {
+          // 1. Trigger the original copy function
+          copyReferralCode();
+
+          // 2. Trigger the particle burst animation
+          const rect = copyButton.getBoundingClientRect();
+          const originX = rect.left + rect.width / 2;
+          const originY = rect.top + rect.height / 2;
+          
+          for (let i = 0; i < 20; i++) {
+              const p = document.createElement('span');
+              const character = clickParticles[Math.floor(Math.random() * clickParticles.length)];
+              p.textContent = character;
+              p.className = 'click-particle';
+
+              if (character === '+7') {
+                  p.style.color = '#04BF8A';
+                  p.style.fontSize = '22px';
+              } else {
+                  p.style.fontSize = `${Math.random() * 12 + 16}px`;
+              }
+
+              p.style.left = `${originX}px`;
+              p.style.top = `${originY}px`;
+
+              const randX = (Math.random() - 0.5) * 300;
+              const randY = (Math.random() - 0.5) * 300;
+              const randRot = (Math.random() - 0.5) * 720;
+              p.style.setProperty('--particle-transform', `translate(${randX}px, ${randY}px) rotate(${randRot}deg)`);
+
+              document.body.appendChild(p);
+              setTimeout(() => p.remove(), 1200);
+          }
+      });
+  });
+  </script>
 </body>
 </html>
