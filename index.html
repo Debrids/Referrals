@@ -17,7 +17,6 @@
   <link rel="shortcut icon" href="favicon.ico" />
   <link rel="canonical" href="https://referralbox.github.io/torbox/" />
 
-  <!-- JSON-LD Structured Data for Rich Snippets -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -72,8 +71,7 @@
     }
   }
   </script>
-  <!-- Usermaven Tracking Script -->
-  <script type="text/javascript">     
+  <script type="text/javascript">
     (function () {
         window.usermaven = window.usermaven || function () { (window.usermavenQ = window.usermavenQ || []).push(arguments); }
         var t = document.createElement('script'),
@@ -82,14 +80,13 @@
         t.id = 'um-tracker';
         t.setAttribute('data-tracking-host', "https://events.usermaven.com");
         t.setAttribute('data-key', 'UMVAEky2Uh');
-        t.setAttribute('data-autocapture', 'true'); 
-        t.setAttribute('data-privacy-policy', 'strict'); 
+        t.setAttribute('data-autocapture', 'true');
+        t.setAttribute('data-privacy-policy', 'strict');
         t.src = 'https://t.usermaven.com/lib.js';
         s.parentNode.insertBefore(t, s);
     })();
   </script>
 
-  <!-- Copy to Clipboard Script -->
   <script>
     function copyReferralCode() {
       const code = document.getElementById('referralCode').innerText;
@@ -107,16 +104,17 @@
   <script>
     document.addEventListener("DOMContentLoaded", function () {
         const applyBtn = document.getElementById('applyCodeBtn');
-        const shimmerSpan = applyBtn.querySelector('span');
-        const originalText = shimmerSpan.innerText;
-        const hoverText = "Apply code now →";
+        const defaultText = applyBtn.querySelector('.text-default');
+        const hoverText = applyBtn.querySelector('.text-hover');
 
         applyBtn.addEventListener('mouseenter', () => {
-        shimmerSpan.innerText = hoverText;
+          defaultText.style.opacity = '0';
+          hoverText.style.opacity = '1';
         });
 
         applyBtn.addEventListener('mouseleave', () => {
-        shimmerSpan.innerText = originalText;
+          defaultText.style.opacity = '1';
+          hoverText.style.opacity = '0';
         });
     });
     </script>
@@ -156,7 +154,7 @@
       display: flex;
       flex-wrap: wrap;
       width: fit-content;
-      max-width: 100%;
+      max-width: auto;
       overflow-x: auto;
       margin: 20px 0;
       border-radius: 6px;
@@ -176,6 +174,7 @@
     .copy-button {
       padding: 10px 16px;
       background-color: #04BF8A;
+      width: 100%;
       color: white;
       border: none;
       font-weight: bold;
@@ -189,85 +188,100 @@
     }
 
     .cta {
-    position: relative;
-    display: inline-block;
-    width: 100%;
-    max-width: 460px;
-    padding: 12px 24px;
-    border-radius: 6px;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 1.1em; /* 👈 Match inner span to avoid layout shifts */
-    text-align: center;
-    color: white;
-    background-color: #04BF8A;
-    overflow: hidden;
-    box-shadow: 0 0 8px #04BF8A;
-    animation: pulseGlow 2s infinite;
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
-    height: 48px; /* 👈 Fix height to avoid jumping when text length differs */
+      position: relative;
+      display: inline-block;
+      overflow: hidden;
+      width: 100%;
+      max-width: 460px;
+      padding: 12px 24px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1.1em;
+      text-align: center;
+      color: white;
+      background: linear-gradient(90deg, #04BF8A, #a2f9d6, #04BF8A);
+      background-size: 200% auto;
+      animation: pulseAnimation 3s infinite linear;
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+      height: 48px;
+      box-shadow: 0 0 8px #04BF8A;
     }
 
     .cta:hover {
-    background-color: #02a673;
-    box-shadow: 0 0 12px #02a673;
+      background-color: #02a673;
+      box-shadow: 0 0 12px #02a673;
+      background-position: right center;
     }
 
     .cta .text-default,
     .cta .text-hover {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    margin: 0;
-    font-weight: bold;
-    font-size: 1.2em;
-    line-height: 1.4;
-    color: white;
-    white-space: nowrap;
-    transition: opacity 0.3s ease-in-out;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      margin: 0;
+      font-weight: bold;
+      font-size: 1.2em;
+      line-height: 1.4;
+      color: #0c3600;
+      white-space: nowrap;
+      transition: opacity 0.3s ease-in-out;
     }
 
     .cta .text-hover {
-    opacity: 0;
+      opacity: 0;
     }
 
     .cta:hover .text-default {
-    opacity: 0;
+      opacity: 0;
     }
 
     .cta:hover .text-hover {
-    opacity: 1;
+      opacity: 1;
     }
-
-
 
     .shimmer-text {
-      display: inline-block;
-      background: linear-gradient(90deg, #ffffff 20%, #a2f9d6 40%, #ffffff 60%);
-      background-size: 200% 100%;
-      animation: shimmer 2.5s linear infinite;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      animation: subtleTextGlow 2.5s ease-in-out infinite;
     }
 
-    @keyframes shimmer {
-      0% { background-position: 200% 0; }
-      100% { background-position: -200% 0; }
+    @keyframes subtleTextGlow {
+      0%, 100% {
+        text-shadow: 0 0 4px rgba(255, 255, 255, 0.2);
+      }
+      50% {
+        text-shadow: 0 0 16px rgba(162, 249, 214, 0.9); /* A soft green glow */
+      }
     }
  
-    @keyframes pulseGlow {
-        0%, 100% {
-            box-shadow: 0 0 8px #04BF8A;
-        }
-        50% {
-            box-shadow: 0 0 20px #a2f9d6;
-        }
+    @keyframes pulseAnimation {
+      0% { background-position: 0% center; }
+      100% { background-position: 200% center; }
+    }
+
+    @media (max-width: 480px) {
+      .referral-container {
+        flex-direction: column;
+        border: 1px solid #2A2D35;
+      }
+
+      .referral-code {
+        border-radius: 6px 6px 0 0;
+        text-align: center;
+        padding: 15px 0;
+      }
+
+      .copy-button {
+        border-radius: 0 0 6px 6px;
+        text-align: center;
+        width: 100%;
+        padding: 15px 0;
+      }
     }
   </style>
 </head>
 <body>
-  <div class="container">
+  <main class="container">
     <img src="https://torbox.app/assets/referral_banner-bf998b20.png" alt="TorBox Referral Program Banner" class="banner" loading="lazy">
 
     <h1>TorBox Referral Code – Get 7 Extra Days with Every Purchase</h1>
@@ -280,19 +294,19 @@
       <div class="referral-code" id="referralCode">2815062b-aa56-4c3f-a12f-7d0f72158243</div>
       <button id="copyButton" class="copy-button" onclick="copyReferralCode()" aria-label="Copy referral code to clipboard">📋 Copy</button>
     </div>
-<br />
+    <br />
     <p>
-        <a href="https://torbox.app/subscription?referral=2815062b-aa56-4c3f-a12f-7d0f72158243"
-        class="cta"
-        target="_blank"
-        rel="noopener noreferrer"
-        id="applyCodeBtn">
-        <span class="text-default shimmer-text pulseGlow">Click here to apply the code automatically</span>
-        <span class="text-hover shimmer-text pulseGlow">Apply code now →</span>
-        </a>
+      <a href="https://torbox.app/subscription?referral=2815062b-aa56-4c3f-a12f-7d0f72158243"
+         class="cta"
+         target="_blank"
+         rel="noopener noreferrer"
+         id="applyCodeBtn">
+        <span class="text-default shimmer-text">Click here to apply the code automatically</span>
+        <span class="text-hover shimmer-text">Apply code now →</span>
+      </a>
     </p>
-<br />
-<br />
+    <br />
+    <br />
     <h2>Why Use This TorBox Referral Code?</h2>
     <ul>
       <li>✅ Works for both <strong>new and existing TorBox accounts</strong></li>
@@ -315,7 +329,7 @@
 
     <h3>What Is TorBox.app?</h3>
     <p><strong>TorBox</strong> is a modern cloud torrenting and debrid-style service that allows users to add torrent files and download them securely and anonymously via the web. It's ideal for users who want fast, no-hassle access to files without running a torrent client locally.</p>
-    
+
     <p>With both free and premium plans, TorBox is a great option for light or occasional torrent users who value privacy, speed, and simplicity. You can start downloading within seconds, and the referral program gives you even more value over time.</p>
 
     <h3>Popular Uses of TorBox.app</h3>
@@ -332,14 +346,14 @@
     <p>This combination of privacy, speed, and convenience makes TorBox.app a top choice for torrent users looking for hassle-free streaming and downloading.</p>
 
     <h3>Read the Official Guide</h3>
-    <p>Want more details? TorBox has an official article explaining how the referral system works:  
+    <p>Want more details? TorBox has an official article explaining how the referral system works:
       👉 <a href="https://support.torbox.app/en/articles/9875657-how-does-the-torbox-referral-system-work" target="_blank" rel="noopener">Read the official referral documentation</a>
     </p>
 
-    <div class="footer">
+    <footer class="footer">
       <p><strong>Thanks for supporting me!</strong> When you use this TorBox referral link, we both benefit — and it helps me continue promoting privacy tools like TorBox.</p>
       <p><em>Keywords: TorBox referral, TorBox referral code, TorBox invite code, TorBox promo, free TorBox days, TorBox subscription discount, best TorBox referral</em></p>
-    </div>
-  </div>
+    </footer>
+  </main>
 </body>
 </html>
